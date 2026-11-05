@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eluyeni Promise Oluwadamilare | Supply Chain &amp; Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7F7; --surface:#FFFFFF; --ink:#12262F; --muted:#51666F;
+  --danfo:#F5B921; --lagoon:#1F6F68; --line:#D5DDDF; --onyellow:#12262F;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1D23; --surface:#162931; --ink:#E8EEF0; --muted:#9DB0B7;
+    --lagoon:#5FC2B7; --line:#2A4049; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1D23; --surface:#162931; --ink:#E8EEF0; --muted:#9DB0B7;
+  --lagoon:#5FC2B7; --line:#2A4049; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:1.08rem;line-height:1.65}
+a{color:inherit}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--danfo);outline-offset:3px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;line-height:1.1;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:0 1.25rem}
+
+/* hero */
+.hero{background:var(--surface);padding:3rem 0 2.2rem;overflow:hidden}
+.id{display:flex;align-items:center;gap:1rem;margin-bottom:1.4rem}
+.mono{flex:none;width:64px;height:64px;border-radius:50%;background:var(--danfo);color:var(--onyellow);display:grid;place-items:center;font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;font-size:1.5rem}
+.id p{margin:0;color:var(--lagoon);font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:500;font-size:1.15rem}
+h1{font-weight:800;font-size:clamp(2.1rem,7vw,3.6rem);letter-spacing:-.025em;max-width:16em}
+.lede{max-width:34em;margin:1rem 0 0;font-size:1.2rem;line-height:1.5}
+.quick{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.btn{display:inline-block;background:var(--danfo);color:var(--onyellow);font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;padding:.75rem 1.3rem;border-radius:6px;text-decoration:none;border:2px solid var(--danfo);cursor:pointer;font-size:1rem;transition:transform .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--ink)}
+.road{position:relative;height:56px;margin-top:2rem;margin-left:calc(50% - 50vw);width:100vw;border-bottom:4px solid var(--ink)}
+.truck{position:absolute;left:0;bottom:-2px;width:112px;height:auto;animation:cruise 9s linear infinite}
+.truck .dk{fill:var(--ink)}
+.truck .win{fill:var(--surface)}
+.truck .body{animation:bob .45s ease-in-out infinite alternate}
+.truck .wheel{transform-box:fill-box;transform-origin:center;animation:spin .7s linear infinite}
+@keyframes cruise{from{transform:translateX(-140px)}to{transform:translateX(100vw)}}
+@keyframes bob{to{transform:translateY(-1.5px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rise{opacity:0;transform:translateY(18px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* jump bar */
+.jump{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.jump .wrap{display:flex;gap:.5rem;overflow-x:auto;padding-top:.7rem;padding-bottom:.7rem}
+.chip{flex:none;font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:500;font-size:.98rem;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.4rem 1rem;cursor:pointer;transition:background .2s,transform .2s}
+.chip:hover{background:var(--danfo);color:var(--onyellow);transform:translateY(-2px)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* panels */
+main{padding:1.5rem 0 1rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:.9rem;overflow:hidden;transition:box-shadow .3s,border-color .3s}
+.panel:hover{border-color:var(--lagoon)}
+.panel.open{box-shadow:0 10px 28px rgba(18,38,47,.12);border-color:var(--danfo)}
+.ph{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.3rem;cursor:pointer}
+.ph:focus-visible{outline:3px solid var(--danfo);outline-offset:-3px}
+.ph h2{font-weight:800;font-size:1.35rem;letter-spacing:-.01em}
+.ph small{display:block;color:var(--muted);font-family:"Source Serif 4",Georgia,serif;font-size:.95rem;margin-top:.15rem;font-weight:400}
+.ic{flex:none;width:34px;height:34px;border-radius:50%;background:var(--danfo);color:var(--onyellow);display:grid;place-items:center;font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;font-size:1.3rem;transition:transform .35s}
+.panel.open .ic{transform:rotate(135deg)}
+.pb{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1)}
+.panel.open .pb{grid-template-rows:1fr}
+.pi{overflow:hidden;min-height:0}
+.pc{padding:.2rem 1.3rem 1.4rem;opacity:0;transform:translateY(10px);transition:opacity .4s .1s,transform .4s .1s}
+.panel.open .pc{opacity:1;transform:none}
+.pc p{margin:0 0 1rem;max-width:40em}
+
+/* results */
+.results{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.res{background:var(--bg);border:1px solid var(--line);border-top:5px solid var(--danfo);border-radius:8px;padding:1.1rem 1.2rem;transition:transform .25s}
+.res:hover{transform:translateY(-5px)}
+.res b{display:block;font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;font-size:2.2rem;letter-spacing:-.02em}
+.res h3{font-size:1.05rem;margin:.1rem 0 .5rem}
+.res p{margin:0!important;font-size:.98rem;color:var(--muted);line-height:1.5}
+
+/* jobs */
+details{background:var(--bg);border:1px solid var(--line);border-radius:8px;margin-bottom:.7rem;transition:border-color .2s}
+details[open]{border-color:var(--lagoon)}
+summary{cursor:pointer;list-style:none;padding:.9rem 3rem .9rem 1.1rem;display:grid;gap:.1rem;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;font-size:1.4rem;color:var(--lagoon)}
+details[open] summary::after{content:"\2212"}
+summary strong{font-family:"Bricolage Grotesque",Arial,sans-serif;font-size:1.12rem}
+summary span{color:var(--muted);font-size:.95rem}
+details ul{margin:0;padding:0 1.1rem 1.1rem 2.3rem;animation:fade .4s}
+details li{margin:.35rem 0}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+.groups{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.groups h3{font-size:1.02rem;color:var(--lagoon);margin-bottom:.5rem}
+.groups ul{margin:0;padding-left:1.1rem}
+.groups li{margin:.25rem 0}
+.item{margin-bottom:1.1rem}
+.item h3{font-size:1.1rem}
+.item p{margin:.15rem 0 0!important;color:var(--muted);font-size:1rem}
+
+/* contact */
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin:0 0 .8rem}
+.row .lab{min-width:5.5rem;color:var(--muted);font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:500}
+.row .val{word-break:break-all}
+.copy{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:500;font-size:.9rem;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.25rem .7rem;cursor:pointer}
+.copy:hover{background:var(--danfo);color:var(--onyellow);border-color:var(--danfo)}
+footer{border-top:1px solid var(--line);padding:1.4rem 0;color:var(--muted);font-size:.93rem}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rise{opacity:1;transform:none}
+  .truck{left:1.25rem;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="id rise d1">
+      <div class="mono" aria-hidden="true">EP</div>
+      <p>Supply Chain &amp; Logistics Professional</p>
+    </div>
+    <h1 class="rise d2">Eluyeni Promise Oluwadamilare</h1>
+    <p class="lede rise d3">I track deliveries, close shortage gaps and turn fleet data into decisions. M.Sc. in Transport and Logistics (Distinction), based in Lagos.</p>
+    <div class="quick rise d4">
+      <a class="btn" href="https://mail.google.com/mail/?view=cm&amp;to=promisedamilare111@gmail.com" target="_blank" rel="noopener">Email me</a>
+      <a class="btn alt" href="https://wa.me/2348124376667" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn alt" href="https://linkedin.com/in/eluyeni-promise-4862862a5" target="_blank" rel="noopener">LinkedIn</a>
+      <button class="btn alt" type="button" data-open="contact">Call</button>
+    </div>
+    <div class="road" aria-hidden="true"><svg class="truck" viewBox="0 0 130 60"><g class="body"><rect x="2" y="6" width="84" height="36" rx="4" fill="#F5B921"/><rect x="2" y="28" width="84" height="5" class="dk"/><path d="M90 16h20l15 16v12H90z" class="dk"/><path d="M97 21h11l9 11H97z" class="win"/><rect x="2" y="42" width="123" height="4" class="dk"/></g><g class="wheel"><circle cx="24" cy="49" r="9" class="dk"/><circle cx="24" cy="49" r="3.5" fill="#F5B921"/><rect x="23" y="41" width="2" height="6" fill="#F5B921"/></g><g class="wheel"><circle cx="46" cy="49" r="9" class="dk"/><circle cx="46" cy="49" r="3.5" fill="#F5B921"/><rect x="45" y="41" width="2" height="6" fill="#F5B921"/></g><g class="wheel"><circle cx="108" cy="49" r="9" class="dk"/><circle cx="108" cy="49" r="3.5" fill="#F5B921"/><rect x="107" y="41" width="2" height="6" fill="#F5B921"/></g></svg></div>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Jump to a section">
+  <div class="wrap" id="chips"></div>
+</nav>
+
+<main class="wrap">
+
+  <section class="panel" id="about">
+    <button class="ph" type="button" aria-expanded="false" aria-controls="about-b"><span><h2>About</h2><small>Who I am and what I do</small></span><span class="ic" aria-hidden="true">+</span></button>
+    <div class="pb" id="about-b"><div class="pi"><div class="pc">
+      <p>I work across transportation planning, logistics coordination, performance tracking and compliance. I monitor KPIs such as On-Time Delivery (OTD), Turnaround Time (TAT), inventory utilization and process efficiency.</p>
+      <p>My research background and daily operations experience let me improve workflows and supply chain visibility with data. I also write on Medium about Lagos: sustainability, solar energy, logistics and intermodal transport.</p>
+    </div></div></div>
+  </section>
+
+  <section class="panel" id="results">
+    <button class="ph" type="button" aria-expanded="false" aria-controls="results-b"><span><h2>Results</h2><small>What I have delivered</small></span><span class="ic" aria-hidden="true">+</span></button>
+    <div class="pb" id="results-b"><div class="pi"><div class="pc">
+      <div class="results">
+        <div class="res"><b><span data-to="60">60</span>%+</b><h3>Fewer late deliveries</h3><p>Found delays and bottlenecks on the managed fleet at TSL and applied corrective actions that cut OTD failure.</p></div>
+        <div class="res"><b><span data-to="80">80</span>%+</b><h3>Shortage value recovered</h3><p>Led reconciliation and tracking of driver shortages, with structured liability follow-up.</p></div>
+        <div class="res"><b><span data-to="20">20</span>%</b><h3>Less equipment downtime</h3><p>Analyzed preventive maintenance at FAS Nigeria to keep warehouse equipment available.</p></div>
+      </div>
+    </div></div></div>
+  </section>
+
+  <section class="panel" id="experience">
+    <button class="ph" type="button" aria-expanded="false" aria-controls="experience-b"><span><h2>Experience</h2><small>Four roles, 2021 to now</small></span><span class="ic" aria-hidden="true">+</span></button>
+    <div class="pb" id="experience-b"><div class="pi"><div class="pc">
+      <details open>
+        <summary><strong>Logistics Coordinator</strong><span>Transport Services Limited (TSL) · Aug 2025 to present</span></summary>
+        <ul>
+          <li>Analyze daily operations: truck scheduling, dispatch and delivery performance.</li>
+          <li>Track and report KPIs with MIX Telematics and Nova Tracker.</li>
+          <li>Enforce pre-trip vehicle inspection checklists for fleet safety and accountability.</li>
+          <li>Coordinate drivers, vendors and internal stakeholders, and keep operational data accurate for cost control.</li>
+          <li>Ensure compliance with transportation regulations and safety standards.</li>
+        </ul>
+      </details>
+      <details>
+        <summary><strong>Supervisor</strong><span>FAS Nigeria Limited · Nov 2023 to Apr 2024</span></summary>
+        <ul>
+          <li>Supervised equipment maintenance for warehouse and logistics activities.</li>
+          <li>Reduced downtime by 20% through preventive maintenance analysis.</li>
+          <li>Managed maintenance records and supported cost estimation and scheduling.</li>
+        </ul>
+      </details>
+      <details>
+        <summary><strong>Graduate Assistant</strong><span>Lagos Maritime and Business School Academy · Nov 2022 to Oct 2023</span></summary>
+        <ul>
+          <li>Supported research, data collection and reporting for logistics and transport studies.</li>
+          <li>Maintained academic and research databases for accuracy.</li>
+          <li>Assisted with performance assessment and reporting.</li>
+        </ul>
+      </details>
+      <details>
+        <summary><strong>Research Personnel (remote)</strong><span>His Majesty Consults · Nov 2021 to Dec 2022</span></summary>
+        <ul>
+          <li>Conducted supply-chain research and data analysis for strategic planning.</li>
+          <li>Prepared analytical reports and presentations to support decisions.</li>
+        </ul>
+      </details>
+    </div></div></div>
+  </section>
+
+  <section class="panel" id="skills">
+    <button class="ph" type="button" aria-expanded="false" aria-controls="skills-b"><span><h2>Skills</h2><small>Operations, analysis, tools</small></span><span class="ic" aria-hidden="true">+</span></button>
+    <div class="pb" id="skills-b"><div class="pi"><div class="pc">
+      <div class="groups">
+        <div><h3>Operations</h3><ul><li>Transportation planning</li><li>Dispatch and route optimization</li><li>Inventory control</li><li>Equipment utilization</li></ul></div>
+        <div><h3>Analysis</h3><ul><li>Logistics reporting</li><li>KPI monitoring: OTD, TAT, cost</li><li>Data analysis and research methods</li><li>Microsoft Excel, Word, PowerPoint</li></ul></div>
+        <div><h3>Tools and compliance</h3><ul><li>MIX Telematics, Nova Tracker</li><li>Regulatory and safety compliance</li><li>Stakeholder and vendor coordination</li></ul></div>
+      </div>
+    </div></div></div>
+  </section>
+
+  <section class="panel" id="education">
+    <button class="ph" type="button" aria-expanded="false" aria-controls="education-b"><span><h2>Education</h2><small>Degrees, training and awards</small></span><span class="ic" aria-hidden="true">+</span></button>
+    <div class="pb" id="education-b"><div class="pi"><div class="pc">
+      <div class="item"><h3>M.Sc. Transport and Logistics, Distinction</h3><p>Lagos State University · Aug 2026. Thesis: Sustainable Transportation Models for Urban Logistics in Lagos.</p></div>
+      <div class="item"><h3>B.Sc. Transport Management and Operations</h3><p>Lagos State University · 2022 · Second Class Upper</p></div>
+      <div class="item"><h3>Certifications</h3><p>Procurement and Logistics (2025) · Digital Marketing, HubSpot Academy (2025) · Data Analysis Training (in progress) · NYSC (2023)</p></div>
+      <div class="item"><h3>Awards</h3><p>Parliamentarian of the Year, TRASA-LASU (2019) · Best Head of Class, TRASA-LASU (2017)</p></div>
+    </div></div></div>
+  </section>
+
+  <section class="panel" id="contact">
+    <button class="ph" type="button" aria-expanded="false" aria-controls="contact-b"><span><h2>Contact</h2><small>Email, call or message me</small></span><span class="ic" aria-hidden="true">+</span></button>
+    <div class="pb" id="contact-b"><div class="pi"><div class="pc">
+      <div class="row"><span class="lab">Email</span><span class="val">promisedamilare111@gmail.com</span><button class="copy" type="button" data-copy="promisedamilare111@gmail.com">Copy</button></div>
+      <div class="row"><span class="lab">Phone</span><span class="val">+234 812 437 6667</span><button class="copy" type="button" data-copy="+2348124376667">Copy</button></div>
+      <div class="row"><span class="lab">Location</span><span class="val">Igando, Lagos State, Nigeria</span></div>
+      <div class="quick">
+        <a class="btn" href="https://mail.google.com/mail/?view=cm&amp;to=promisedamilare111@gmail.com" target="_blank" rel="noopener">Write an email</a>
+        <a class="btn alt" href="tel:+2348124376667" target="_blank" rel="noopener">Call now</a>
+        <a class="btn alt" href="https://wa.me/2348124376667" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div></div></div>
+  </section>
+</main>
+
+<footer><div class="wrap">Eluyeni Promise Oluwadamilare, Lagos, Nigeria</div></footer>
+
+<script>
+(function(){
+  var panels=[].slice.call(document.querySelectorAll('.panel'));
+  var chips=document.getElementById('chips');
+  var names={about:'About',results:'Results',experience:'Experience',skills:'Skills',education:'Education',contact:'Contact'};
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  panels.forEach(function(p){
+    var c=document.createElement('button');
+    c.className='chip';c.type='button';c.textContent=names[p.id];c.dataset.id=p.id;
+    chips.appendChild(c);
+  });
+
+  function count(p){
+    p.querySelectorAll('[data-to]').forEach(function(el){
+      var to=+el.dataset.to;
+      if(reduce){el.textContent=to;return}
+      var t0=null;
+      function step(t){
+        if(!t0)t0=t;
+        var k=Math.min((t-t0)/900,1);
+        el.textContent=Math.round(to*(1-Math.pow(1-k,3)));
+        if(k<1)requestAnimationFrame(step);
+      }
+      el.textContent=0;requestAnimationFrame(step);
+    });
+  }
+
+  function setOpen(p,open){
+    p.classList.toggle('open',open);
+    p.querySelector('.ph').setAttribute('aria-expanded',open);
+    var chip=chips.querySelector('[data-id="'+p.id+'"]');
+    if(chip)chip.classList.toggle('on',open);
+    if(open&&p.id==='results')count(p);
+  }
+
+  panels.forEach(function(p){
+    p.querySelector('.ph').addEventListener('click',function(){
+      setOpen(p,!p.classList.contains('open'));
+    });
+  });
+
+  function show(id){
+    var p=document.getElementById(id);
+    if(!p)return;
+    setOpen(p,true);
+    setTimeout(function(){p.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})},60);
+  }
+
+  chips.addEventListener('click',function(e){
+    var c=e.target.closest('.chip');if(c)show(c.dataset.id);
+  });
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click',function(){show(b.dataset.open)});
+  });
+
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var txt=b.dataset.copy,old=b.textContent;
+      function done(m){b.textContent=m;setTimeout(function(){b.textContent=old},1800)}
+      try{
+        navigator.clipboard.writeText(txt).then(function(){done('Copied')},function(){done('Select and copy')});
+      }catch(err){done('Select and copy')}
+    });
+  });
+
+  setOpen(document.getElementById('about'),true);
+})();
+</script>
+</body>
+</html>

@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Eluyeni Promise Oluwadamilare | Supply Chain &amp; Logistics</title>
+<meta name="description" content="Eluyeni Promise Oluwadamilare, supply chain and logistics professional in Lagos. M.Sc. Transport and Logistics (Distinction). Logistics Coordinator at TSL.">
+<meta name="theme-color" content="#F5B921">
+<meta property="og:title" content="Eluyeni Promise Oluwadamilare | Supply Chain &amp; Logistics">
+<meta property="og:description" content="I track deliveries, close shortage gaps and turn fleet data into decisions. Based in Lagos, Nigeria.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eluyenipromise.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -124,9 +130,56 @@ footer{border-top:1px solid var(--line);padding:1.4rem 0;color:var(--muted);font
   .rise{opacity:1;transform:none}
   .truck{left:1.25rem;transform:none!important}
 }
+
+.hero{position:relative}
+.prog{position:fixed;top:0;left:0;height:4px;width:100%;background:var(--danfo);transform-origin:left;transform:scaleX(0);z-index:30}
+.mono{animation:float 3.5s ease-in-out infinite alternate}
+@keyframes float{to{transform:translateY(-7px)}}
+.rotor{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;font-size:clamp(1.25rem,4.4vw,1.8rem);margin:1.1rem 0 0;color:var(--lagoon);min-height:1.3em}
+.caret{display:inline-block;width:3px;height:1em;background:var(--danfo);margin-left:3px;vertical-align:-.12em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.btn.pulse{animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(245,185,33,.6)}70%{box-shadow:0 0 0 14px rgba(245,185,33,0)}100%{box-shadow:0 0 0 0 rgba(245,185,33,0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.panel.open .groups li{animation:fade .5s both}
+.panel.open .groups li:nth-child(2){animation-delay:.08s}
+.panel.open .groups li:nth-child(3){animation-delay:.16s}
+.panel.open .groups li:nth-child(4){animation-delay:.24s}
+.panel.open .item{animation:fade .5s both}
+.panel.open .item:nth-child(2){animation-delay:.1s}
+.panel.open .item:nth-child(3){animation-delay:.2s}
+.panel.open .item:nth-child(4){animation-delay:.3s}
+.tt{position:absolute;top:1rem;right:1.25rem;z-index:3;font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:500;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;cursor:pointer;transition:transform .2s}
+.tt:hover{transform:rotate(-4deg) scale(1.05)}
+.top{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:50%;border:0;background:var(--danfo);color:var(--onyellow);font-size:1.3rem;font-weight:800;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .3s,transform .3s;z-index:9;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.top.show{opacity:1;pointer-events:auto;transform:none}
+.top:hover{transform:translateY(-3px)}
+
+.hero .wrap{position:relative;z-index:1}
+.hero::before{content:"";position:absolute;inset:-20%;background:radial-gradient(40% 40% at 20% 30%,rgba(245,185,33,.28),transparent 70%),radial-gradient(35% 35% at 80% 20%,rgba(31,111,104,.24),transparent 70%);animation:drift 16s ease-in-out infinite alternate;pointer-events:none}
+@keyframes drift{to{transform:translate(4%,6%) scale(1.12)}}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,40%),rgba(245,185,33,.2),transparent 70%);pointer-events:none}
+.hero{padding:4rem 0 2.6rem}
+h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-right:.22em}
+h1 .w>span{display:inline-block;transform:translateY(115%);animation:wup .95s cubic-bezier(.2,.7,.2,1) forwards}
+h1 .w:nth-child(1)>span{animation-delay:.1s}h1 .w:nth-child(2)>span{animation-delay:.25s}h1 .w:nth-child(3)>span{animation-delay:.4s}
+@keyframes wup{to{transform:none}}
+.ticker{background:var(--ink);color:var(--bg);overflow:hidden;white-space:nowrap;border-bottom:4px solid var(--danfo)}
+.track{display:inline-block;padding:.75rem 0;animation:tick 40s linear infinite;font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:500;font-size:.98rem}
+.track span{margin:0 1.2rem}.track i{font-style:normal;color:var(--danfo)}
+@keyframes tick{to{transform:translateX(-50%)}}
+.ticker:hover .track{animation-play-state:paused}
+main{counter-reset:sec}.panel{counter-increment:sec}
+.ph h2::before{content:counter(sec,decimal-leading-zero);display:block;font-size:.78rem;letter-spacing:.14em;color:var(--lagoon);margin-bottom:.25rem}
+.ph h2::after{content:"";display:block;height:3px;width:0;background:var(--danfo);margin-top:.35rem;transition:width .5s .1s}
+.panel.open .ph h2::after{width:44px}
+.res{transition:transform .15s ease-out,box-shadow .25s}
+.res:hover{box-shadow:0 12px 26px rgba(18,38,47,.14)}
 </style>
 </head>
 <body>
+<div class="prog" id="prog" aria-hidden="true"></div>
 
 <header class="hero">
   <div class="wrap">
@@ -134,10 +187,12 @@ footer{border-top:1px solid var(--line);padding:1.4rem 0;color:var(--muted);font
       <div class="mono" aria-hidden="true">EP</div>
       <p>Supply Chain &amp; Logistics Professional</p>
     </div>
-    <h1 class="rise d2">Eluyeni Promise Oluwadamilare</h1>
-    <p class="lede rise d3">I track deliveries, close shortage gaps and turn fleet data into decisions. M.Sc. in Transport and Logistics (Distinction), based in Lagos.</p>
+    <h1><span class="w"><span>Eluyeni</span></span> <span class="w"><span>Promise</span></span> <span class="w"><span>Oluwadamilare</span></span></h1>
+    <p class="lede rise d3">Logistics Coordinator at TSL with an M.Sc. in Transport and Logistics (Distinction), based in Lagos.</p>
+    <p class="rotor rise d3" aria-label="I track deliveries, close shortage gaps and turn fleet data into decisions">I <span id="rot">track deliveries.</span><span class="caret" aria-hidden="true"></span></p>
     <div class="quick rise d4">
-      <a class="btn" href="https://mail.google.com/mail/?view=cm&amp;to=promisedamilare111@gmail.com" target="_blank" rel="noopener">Email me</a>
+      <a class="btn pulse" href="Eluyeni_Promise_CV.pdf" download>Download CV</a>
+      <a class="btn alt" href="https://mail.google.com/mail/?view=cm&amp;to=promisedamilare111@gmail.com" target="_blank" rel="noopener">Email me</a>
       <a class="btn alt" href="https://wa.me/2348124376667" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn alt" href="https://linkedin.com/in/eluyeni-promise-4862862a5" target="_blank" rel="noopener">LinkedIn</a>
       <button class="btn alt" type="button" data-open="contact">Call</button>
@@ -145,6 +200,8 @@ footer{border-top:1px solid var(--line);padding:1.4rem 0;color:var(--muted);font
     <div class="road" aria-hidden="true"><svg class="truck" viewBox="0 0 130 60"><g class="body"><rect x="2" y="6" width="84" height="36" rx="4" fill="#F5B921"/><rect x="2" y="28" width="84" height="5" class="dk"/><path d="M90 16h20l15 16v12H90z" class="dk"/><path d="M97 21h11l9 11H97z" class="win"/><rect x="2" y="42" width="123" height="4" class="dk"/></g><g class="wheel"><circle cx="24" cy="49" r="9" class="dk"/><circle cx="24" cy="49" r="3.5" fill="#F5B921"/><rect x="23" y="41" width="2" height="6" fill="#F5B921"/></g><g class="wheel"><circle cx="46" cy="49" r="9" class="dk"/><circle cx="46" cy="49" r="3.5" fill="#F5B921"/><rect x="45" y="41" width="2" height="6" fill="#F5B921"/></g><g class="wheel"><circle cx="108" cy="49" r="9" class="dk"/><circle cx="108" cy="49" r="3.5" fill="#F5B921"/><rect x="107" y="41" width="2" height="6" fill="#F5B921"/></g></svg></div>
   </div>
 </header>
+
+<div class="ticker" aria-hidden="true"><div class="track"><span>MIX Telematics</span><i>&#9679;</i><span>Nova Tracker</span><i>&#9679;</i><span>Dispatch</span><i>&#9679;</i><span>Route optimization</span><i>&#9679;</i><span>KPI monitoring</span><i>&#9679;</i><span>On-Time Delivery</span><i>&#9679;</i><span>Turnaround Time</span><i>&#9679;</i><span>Inventory control</span><i>&#9679;</i><span>Compliance</span><i>&#9679;</i><span>Microsoft Excel</span><i>&#9679;</i><span>Data analysis</span><i>&#9679;</i><span>MIX Telematics</span><i>&#9679;</i><span>Nova Tracker</span><i>&#9679;</i><span>Dispatch</span><i>&#9679;</i><span>Route optimization</span><i>&#9679;</i><span>KPI monitoring</span><i>&#9679;</i><span>On-Time Delivery</span><i>&#9679;</i><span>Turnaround Time</span><i>&#9679;</i><span>Inventory control</span><i>&#9679;</i><span>Compliance</span><i>&#9679;</i><span>Microsoft Excel</span><i>&#9679;</i><span>Data analysis</span><i>&#9679;</i></div></div>
 
 <nav class="jump" aria-label="Jump to a section">
   <div class="wrap" id="chips"></div>
@@ -246,7 +303,8 @@ footer{border-top:1px solid var(--line);padding:1.4rem 0;color:var(--muted);font
   </section>
 </main>
 
-<footer><div class="wrap">Eluyeni Promise Oluwadamilare, Lagos, Nigeria</div></footer>
+<button class="top" id="top" type="button" aria-label="Back to top">&uarr;</button>
+<footer><div class="wrap">Eluyeni Promise Oluwadamilare, Lagos, Nigeria · &copy; <span id="yr">2026</span></div></footer>
 
 <script>
 (function(){
@@ -313,6 +371,67 @@ footer{border-top:1px solid var(--line);padding:1.4rem 0;color:var(--muted);font
       }catch(err){done('Select and copy')}
     });
   });
+
+  var all=document.createElement('button');
+  all.className='chip';all.type='button';all.textContent='Expand all';
+  chips.appendChild(all);
+  var allOpen=false;
+  all.addEventListener('click',function(){
+    allOpen=!allOpen;
+    panels.forEach(function(p){setOpen(p,allOpen)});
+    all.textContent=allOpen?'Collapse all':'Expand all';
+  });
+
+  var root=document.documentElement,tt=document.createElement('button');
+  tt.className='tt';tt.type='button';
+  var dark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  try{var sv=localStorage.getItem('theme');if(sv)dark=sv==='dark'}catch(e){}
+  function theme(){root.setAttribute('data-theme',dark?'dark':'light');tt.textContent=dark?'Light mode':'Dark mode'}
+  theme();
+  tt.addEventListener('click',function(){dark=!dark;theme();try{localStorage.setItem('theme',dark?'dark':'light')}catch(e){}});
+  document.querySelector('.hero').appendChild(tt);
+
+  var prog=document.getElementById('prog'),top=document.getElementById('top');
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.transform='scaleX('+(h>0?window.scrollY/h:0)+')';
+    top.classList.toggle('show',window.scrollY>500);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+    },{threshold:.12});
+    panels.forEach(function(p,i){p.classList.add('reveal');p.style.transitionDelay=(i%3)*80+'ms';io.observe(p)});
+  }
+
+  var rot=document.getElementById('rot'),lines=['track deliveries.','close shortage gaps.','turn fleet data into decisions.','keep fleets safe and compliant.'],li=0,ci=lines[0].length,del=true;
+  if(!reduce){
+    setTimeout(function tick(){
+      var w=lines[li];
+      if(del){ci--;rot.textContent=w.slice(0,ci);if(ci<=0){del=false;li=(li+1)%lines.length;setTimeout(tick,300);return}setTimeout(tick,35)}
+      else{ci++;rot.textContent=lines[li].slice(0,ci);if(ci>=lines[li].length){del=true;setTimeout(tick,1900);return}setTimeout(tick,60)}
+    },2200);
+  }
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  var hero=document.querySelector('.hero');
+  hero.addEventListener('pointermove',function(e){
+    var r=hero.getBoundingClientRect();
+    hero.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    hero.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+  if(!reduce){
+    document.querySelectorAll('.res').forEach(function(c){
+      c.addEventListener('pointermove',function(e){
+        var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        c.style.transform='perspective(700px) rotateX('+(-y*8)+'deg) rotateY('+(x*10)+'deg) translateY(-4px)';
+      });
+      c.addEventListener('pointerleave',function(){c.style.transform=''});
+    });
+  }
 
   setOpen(document.getElementById('about'),true);
 })();
